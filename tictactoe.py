@@ -59,16 +59,18 @@ def doTurn(field):
         if not fieldscopy:
             printField()
             print('***GAME OVER***')
+            return False
         else:    
             nextTurn = setNextTurn()
             fields[fields.index(nextTurn)] = player2
-            setTurnToRow(nextTurn, player2)      
+            setTurnToRow(nextTurn, player2)
+            return True      
     else:
         print('No possible selection')
-                
-        
-for i in range(1,6):    
+        return True  
+         
+playRuns = True        
+while(playRuns):    
     printField()
     field = input('Choose field:')
-    doTurn(field.upper())
-    
+    playRuns = doTurn(field.upper())
